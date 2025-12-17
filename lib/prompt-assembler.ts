@@ -128,6 +128,9 @@ export async function predictContext(userInput: string, apiKey: string = process
 
     } catch (error) {
         console.error('Context Engine Prediction Failed:', error);
+        // SECURITY: Do NOT re-throw the error or return it. 
+        // The error object might contain the API key (in headers) or request details.
+        // Always return safe default values to the client.
         return DEFAULT_TAG_VALUES;
     }
 }
