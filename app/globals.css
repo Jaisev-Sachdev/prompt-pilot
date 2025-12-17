@@ -3,24 +3,192 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand Colors */
+  --primary-blue: #3b82f6;
+  --primary-purple: #a855f7;
+  --accent-cyan: #06b6d4;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.18);
+
+  /* Shadows */
+  --glow-blue: 0 0 40px rgba(59, 130, 246, 0.3);
+  --glow-purple: 0 0 40px rgba(168, 85, 247, 0.3);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-neue-montreal);
+  --font-mono: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --glass-bg: rgba(10, 10, 10, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
   }
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Gradient Utilities */
+.gradient-blue-purple {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Scroll Snap Sections */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Retro Futurism Background */
+.retro-bg {
+  background-color: #050505;
+  background-image:
+    linear-gradient(135deg, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.8) 100%),
+    repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 10px,
+      rgba(168, 85, 247, 0.1) 10px,
+      rgba(168, 85, 247, 0.1) 20px,
+      transparent 20px,
+      transparent 30px,
+      rgba(225, 29, 72, 0.1) 30px,
+      rgba(225, 29, 72, 0.1) 40px),
+    radial-gradient(circle at 0% 0%, rgba(168, 85, 247, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(225, 29, 72, 0.3) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Retro Gradient Accent (Purple to Red/Rose) */
+.retro-gradient {
+  background: linear-gradient(135deg, #a855f7 0%, #e11d48 100%);
+}
+
+.retro-gradient-text {
+  background: linear-gradient(135deg, #a855f7 0%, #e11d48 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Noise overlay */
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-size: 150px;
+  /* Small size for tight grain */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+  /* Zinc-950/Black */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  /* Zinc-800 */
+  border-radius: 4px;
+  border: 2px solid #09090b;
+  /* Padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+  /* Zinc-700 */
 }

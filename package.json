@@ -1,5 +1,5 @@
 {
-  "name": "linguist-ai",
+  "name": "promptpilot-ai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.560.0",
     "next": "16.0.8",
     "react": "19.2.1",
     "react-dom": "19.2.1"
