@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Footer } from "@/components/layout/footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const neueMontreal = localFont({
   src: "../app/fonts/NeueMontreal-Regular.otf",
@@ -28,6 +29,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
