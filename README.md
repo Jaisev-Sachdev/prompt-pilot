@@ -1,6 +1,7 @@
 # PromptPilot
 
 <div align="center">
+  <img src="public/screenshots/prompt-pilot-demo.png" alt="PromptPilot Demo" width="100%" />
   <img src="public/screenshots/demo-1.png" alt="PromptPilot Demo 1" width="100%" />
   <img src="public/screenshots/demo-2.png" alt="PromptPilot Demo 2" width="100%" />
 </div>
